@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import React, { useRef } from "react";
 import {
   Flex,
   Button,
@@ -23,6 +23,8 @@ import { Link } from "react-router-dom";
 const Navbar = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const btnRef = useRef(null);
+  const inputRef = useRef<HTMLInputElement | null>(null);
+
   return (
     <>
       <Flex
@@ -84,9 +86,21 @@ const Navbar = () => {
         </Flex>
         <Spacer />
         <Flex gap="0.2rem" flexDirection="row" alignItems="center">
-          <InputGroup>
-            <Input w="30rem" borderRadius="2rem" placeholder="Search" />
-            <InputRightElement>
+          <InputGroup
+            w={{
+              base: "3rem",
+              sm: "7rem",
+              md: "20rem",
+              lg: "25rem",
+              xl: "30rem",
+            }}
+          >
+            <Input ref={inputRef} borderRadius="2rem" placeholder="Search" />
+            <InputRightElement
+              onClick={() => {
+                inputRef?.current?.focus();
+              }}
+            >
               <svg
                 height="24"
                 viewBox="0 0 24 24"
