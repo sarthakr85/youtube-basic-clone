@@ -51,7 +51,7 @@ const VideoPlayer = () => {
             <ReactPlayer
               width="100%"
               height="30rem"
-              // playing={true}
+              playing={true}
               controls={true}
               url={selectedVideo.submission?.mediaUrl}
             />
